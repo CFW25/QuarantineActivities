@@ -13,7 +13,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   const activityTemplate = path.resolve(`src/templates/activityTemplate.js`)
   const tagTemplate = path.resolve("src/templates/tags.js")
-  const questionTemplate = path.resolve("src/templates/questionTemplate.js")
 
   const result = await graphql(`
     {

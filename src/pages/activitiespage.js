@@ -9,10 +9,13 @@ const ActivityPageCont = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  background: #b0cdd6;
+  background: linear-gradient(-45deg, #febf01 0%, #fdffa8 100%);
 `
 const ActivityCont = styled.div`
   margin-bottom:2.5rem;
+`
+const ActTitle = styled.h1`
+
 `
 const IndexPage = props => {
   const { data } = props
@@ -24,14 +27,15 @@ const IndexPage = props => {
       <Navbar/>
       {/* in my site I wrap each page with a Layout and SEO component which have 
     been omitted here for clarity and replaced with a React.fragment --> */}
-      <h1>Activities</h1>
+      <ActTitle>Activities</ActTitle>
+      
 
       {posts.map(({ node }) => {
         const { excerpt } = node
-        const { title, time, date, path, tags} = node.frontmatter
+        const { title, time, date, path, tags, equipment} = node.frontmatter
         return (
           <ActivityCont>
-            <ActivityCard title={title} time={time} excerpt={excerpt} link={path} tags={tags}/>
+            <ActivityCard title={title} time={time} excerpt={excerpt} link={path} tags={tags} equipment={equipment}/>
           </ActivityCont>
         )
       })}
@@ -45,7 +49,9 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query {
-    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
+    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }
+    filter: {fileAbsolutePath: {regex: "/(activity)/"  }}
+    ) {
       edges {
         node {
           id
@@ -56,6 +62,7 @@ export const pageQuery = graphql`
             title
             date(formatString: "MMMM DD, YYYY")
             tags
+            equipment
           }
         }
       }

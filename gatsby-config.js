@@ -24,6 +24,7 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-styled-components`,
     `gatsby-transformer-remark`,
+    `gatsby-plugin-playground`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
