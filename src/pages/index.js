@@ -1,57 +1,38 @@
-import React from "react"
-import { graphql } from "gatsby"
-import { Link } from "gatsby"
+import React from 'react'
 import GlobalStyle from '../components/globalstyle'
 import styled from 'styled-components'
-import Navbar from '../components/navbar'
+import {Link} from 'gatsby'
 
-const QContainer = styled.div`
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    background: linear-gradient(-45deg, #febf01 0%, #fdffa8 100%);
-    height:100vh;
+const StyledDiv = styled.div`
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    border: 2px solid #73AD21;
+    border-radius: 25px;
+    margin:2rem 2rem;
+`;
+
+const StyledLink = styled(Link)`
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    &:hover{
+        background-color: black;}
 `
-const QCard = styled(props => <Link {...props} />)`
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    border-radius: 35px;
-    text-align: center;
-    background:white;
-    height:30vh;
-    width:80vh;
-    margin-bottom:1rem;
-    margin-top:5rem;
-    box-shadow: 10px 10px 8px #888888;
-    h1{
-        font-size: 5rem;
-        padding: 2rem;
-    }
-    h2{
-        text-decoration: none;
-        padding-top: 9rem;
-    }
-    &:hover {
-        box-shadow: 10px 10px 8px #FFFFFF;
-    }
-    `
-    const StyledLink = styled(props => <Link {...props} />)`
-        color: black;
-    `;
 
-const Index = () => {
-  return (
-    <QContainer>
-      <GlobalStyle/>
-      <Navbar/>
-        <h1>Suggest an activity</h1>
-        <QCard to="/questionOne">
-          <h2>Suggest an activity</h2>
-        </QCard>
-        <QCard to="/activitiespage">
-          <h2>Show me all the activities</h2>
-        </QCard>
-    </QContainer>)
+const index = () => {
+    return (
+        <StyledDiv>
+            <GlobalStyle />
+            <h1>Suggest an activity</h1>
+            <StyledLink to="/questionpage">Go!</StyledLink>
+            <h1>View all activities</h1>
+            <StyledLink to="/activitiespage">Go!</StyledLink>
+            <h1>Check out these free resources!</h1>
+            <StyledLink to="/resourcespage">Go!</StyledLink>
+        </StyledDiv>
+    )
 }
 
-export default Index
+export default index

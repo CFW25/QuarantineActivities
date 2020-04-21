@@ -4,6 +4,7 @@ import ActivityCard from '../components/activities/activitycard'
 import GlobalStyle from '../components/globalstyle'
 import styled from 'styled-components'
 import Navbar from '../components/navbar'
+import Select from 'react-select'
 
 const ActivityPageCont = styled.div`
   display: flex;
@@ -21,6 +22,13 @@ const IndexPage = props => {
   const { data } = props
   const posts = data.allMarkdownRemark.edges
 
+  const options = [
+  { value: 'chocolate', label: 'Chocolate' },
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'vanilla', label: 'Vanilla' }
+]
+
+
   return (
     <ActivityPageCont>
       <GlobalStyle/>
@@ -28,6 +36,7 @@ const IndexPage = props => {
       {/* in my site I wrap each page with a Layout and SEO component which have 
     been omitted here for clarity and replaced with a React.fragment --> */}
       <ActTitle>Activities</ActTitle>
+      <Select options={options} />
       
 
       {posts.map(({ node }) => {
